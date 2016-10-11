@@ -1,0 +1,5 @@
+elems:
+
+  - src:  (.+)$
+    dst:  /etc/lightdm/<1>
+    only: f?lightdm
