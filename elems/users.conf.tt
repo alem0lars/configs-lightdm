@@ -1,3 +1,4 @@
+#
 # User accounts configuration
 #
 # NOTE: If you have AccountsService installed on your system, then LightDM will
@@ -6,11 +7,8 @@
 # minimum-uid = Minimum UID required to be shown in greeter
 # hidden-users = Users that are not shown to the user
 # hidden-shells = Shells that indicate a user cannot login
-
+#
 [UserList]
 minimum-uid=1000
 hidden-users=nobody nobody4 noaccess
 hidden-shells=/bin/false /usr/sbin/nologin
-
-
-# vim: set filetype=eruby.dosini :

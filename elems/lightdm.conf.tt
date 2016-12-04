@@ -1,5 +1,6 @@
+#
 # General configuration
-
+#
 # start-default-seat = True to always start one seat if none are defined in the configuration
 # greeter-user = User to run greeter as
 # minimum-display-number = Minimum display number to use for X servers
@@ -14,14 +15,15 @@
 # sessions-directory = Directory to find sessions
 # remote-sessions-directory = Directory to find remote sessions
 # greeters-directory = Directory to find greeters
-
+# backup-logs = True to move add a .old suffix to old log files when opening new ones
+#
 [LightDM]
-start-default-seat=true
-greeter-user=lightdm
-minimum-display-number=0
-minimum-vt=2
-lock-memory=true
-user-authority-in-system-dir=false
+#start-default-seat=true
+#greeter-user=lightdm
+#minimum-display-number=0
+#minimum-vt=7
+#lock-memory=true
+#user-authority-in-system-dir=false
 #guest-account-script=guest-account
 #logind-check-graphical=false
 #log-directory=/var/log/lightdm
@@ -30,12 +32,15 @@ user-authority-in-system-dir=false
 #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions:/usr/share/wayland-sessions
 #remote-sessions-directory=/usr/share/lightdm/remote-sessions
 #greeters-directory=/usr/share/lightdm/greeters:/usr/share/xgreeters
+#backup-logs=true
 
 #
-# Seat defaults
+# Seat configuration
 #
-# PLEASE NOTE: [SeatDefaults] section is deprecated and won't be supported in the future.
-#              Users are encouraged to update their lightdm.conf files, using [Seat:*] instead.
+# Seat configuration is matched against the seat name glob in the section, for example:
+# [Seat:*] matches all seats and is applied first.
+# [Seat:seat0] matches the seat named "seat0".
+# [Seat:thin-client*] matches all seats that have names that start with "thin-client".
 #
 # type = Seat type (xlocal, xremote)
 # pam-service = PAM service to use for login
@@ -63,7 +68,7 @@ user-authority-in-system-dir=false
 # allow-user-switching = True if allowed to switch users
 # allow-guest = True if guest login is allowed
 # guest-session = Session to load for guests (overrides user-session)
-# session-wrapper=/etc/lightdm/Xsession
+session-wrapper=/etc/lightdm/Xsession
 # greeter-wrapper = Wrapper script to run greeter with
 # guest-wrapper = Wrapper script to run guest sessions with
 # display-setup-script = Script to run when starting a greeter session (runs as root)
@@ -98,12 +103,12 @@ user-authority-in-system-dir=false
 #unity-compositor-timeout=60
 #greeter-session=example-gtk-gnome
 #greeter-hide-users=false
-greeter-allow-guest=false
-greeter-show-manual-login=true
-greeter-show-remote-login=true
+#greeter-allow-guest=true
+#greeter-show-manual-login=false
+#greeter-show-remote-login=true
 #user-session=default
 #allow-user-switching=true
-allow-guest=false
+#allow-guest=true
 #guest-session=
 session-wrapper=/etc/lightdm/Xsession
 #greeter-wrapper=
@@ -119,14 +124,6 @@ session-wrapper=/etc/lightdm/Xsession
 #autologin-in-background=false
 #autologin-session=
 #exit-on-failure=false
-
-#
-# Seat configuration
-#
-# Each seat must start with "Seat:".
-# Uses settings from [Seat:*], any of these can be overriden by setting them in this section.
-#
-#[Seat:0]
 
 #
 # XDMCP Server configuration
@@ -164,6 +161,3 @@ session-wrapper=/etc/lightdm/Xsession
 #width=1024
 #height=768
 #depth=8
-
-
-# vim: set filetype=eruby.dosini :

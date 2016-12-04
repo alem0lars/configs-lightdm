@@ -1,5 +1,10 @@
 elems:
 
-  - src:  (.+)$
+  - src:  ^((?!.*Xsession).+)$
     dst:  /etc/lightdm/<1>
     only: f?lightdm
+
+  - src:   ^(Xsession)$
+    dst:   /etc/lightdm/<1>
+    perms: 755
+    only:  f?lightdm
